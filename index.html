@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Pakaian Kustom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Pesanan Pakaian Kustom</h1>
+            <p class="subtitle">Buat pakaian unik sesuai keinginan Anda</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <form id="orderForm">
+                <!-- Informasi Pemesan -->
+                <div class="form-section">
+                    <h2 class="section-title">Informasi Pemesan</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap *</label>
+                            <input type="text" id="nama" name="nama" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">No. WhatsApp *</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="instagram">Instagram (Opsional)</label>
+                            <input type="text" id="instagram" name="instagram">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat">Alamat Lengkap *</label>
+                            <textarea id="alamat" name="alamat" rows="3" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pesanan Items -->
+                <div class="form-section">
+                    <h2 class="section-title">Detail Pesanan</h2>
+                    <div id="orderItems">
+                        <!-- Item pesanan akan ditambahkan di sini -->
+                    </div>
+                    <button type="button" id="addOrderItem" class="add-item-btn">+ Tambah Item Pesanan</button>
+                </div>
+
+                <!-- Ringkasan Pesanan -->
+                <div class="form-section">
+                    <h2 class="section-title">Ringkasan Pesanan</h2>
+                    <div class="summary-section">
+                        <div id="orderSummary">
+                            <!-- Ringkasan pesanan akan diisi oleh JavaScript -->
+                        </div>
+                        <div class="total-summary">
+                            <div class="total-row">
+                                <span>Total Item:</span>
+                                <span id="totalItems">0</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Total PCS:</span>
+                                <span id="totalPcs">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Kirim Pesanan</button>
+            </form>
+
+            <div id="successMessage" class="message success">
+                Pesanan Anda telah berhasil dikirim! Kami akan menghubungi Anda segera.
+            </div>
+            <div id="errorMessage" class="message error">
+                Terjadi kesalahan saat mengirim pesanan. Silakan coba lagi.
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
