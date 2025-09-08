@@ -127,20 +127,30 @@ function attachUploadListener(fileInput, type, itemIndex, fileIndex) {
   fileInput.addEventListener("change", async function () {
     const files = Array.from(this.files);
     if (!files.length) return;
-    const hiddenName = `item_${itemIndex}_file_${type}_links`;
-    let hiddenInput = document.querySelector(`input[name="${hiddenName}"]`);
-    if (!hiddenInput) {
-      hiddenInput = document.createElement("input");
-      hiddenInput.type = "hidden";
-      hiddenInput.name = hiddenName;
-      hiddenInput.value = "";
-      document.getElementById("orderForm").appendChild(hiddenInput);
-    }
+
     for (const file of files) {
+      // ✅ Cek ukuran file (10 MB = 10 * 1024 * 1024 bytes)
+      if (file.size > 10 * 1024 * 1024) {
+        alert(`❌ File "${file.name}" terlalu besar (${(file.size/1024/1024).toFixed(2)} MB). Maksimal 10 MB.`);
+        continue; // skip file ini, jangan upload
+      }
+
+      const hiddenName = `item_${itemIndex}_file_${type}_links`;
+      let hiddenInput = document.querySelector(`input[name="${hiddenName}"]`);
+      if (!hiddenInput) {
+        hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = hiddenName;
+        hiddenInput.value = "";
+        document.getElementById("orderForm").appendChild(hiddenInput);
+      }
+
       try {
         const url = await uploadToCloudinary(file);
-        hiddenInput.value = hiddenInput.value ? hiddenInput.value+", "+url : url;
-      } catch(err) { alert("Gagal upload ke Cloudinary: "+err.message); }
+        hiddenInput.value = hiddenInput.value ? hiddenInput.value + ", " + url : url;
+      } catch(err) {
+        alert("❌ Gagal upload ke Cloudinary: " + err.message);
+      }
     }
   });
 }
