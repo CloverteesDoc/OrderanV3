@@ -549,6 +549,7 @@ input:focus, select:focus, textarea:focus {
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  overflow: auto;
 }
 .popup {
   background: #fff;
@@ -621,3 +622,4 @@ input:focus, select:focus, textarea:focus {
 .popup-close-btn:active {
   transform: translateY(0);
 }
+
