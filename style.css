@@ -65,6 +65,18 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
+.note {
+  background-color: #fff8e1;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-left: 6px solid #f9a825;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #5d4037;
+  white-space: pre-line;
+}
+
 .subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
@@ -622,4 +634,5 @@ input:focus, select:focus, textarea:focus {
 .popup-close-btn:active {
   transform: translateY(0);
 }
+
 
